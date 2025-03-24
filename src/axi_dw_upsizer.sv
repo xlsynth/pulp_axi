@@ -534,7 +534,7 @@ module axi_dw_upsizer #(
       endcase
     end
 
-    always_ff @(posedge clk_i or negedge rst_ni) begin
+    always_ff @(posedge clk_i) begin
       if (!rst_ni) begin
         r_state_q <= R_IDLE;
         r_req_q   <= '0    ;
@@ -726,7 +726,7 @@ module axi_dw_upsizer #(
     end
   end
 
-  always_ff @(posedge clk_i or negedge rst_ni) begin
+  always_ff @(posedge clk_i) begin
     if (!rst_ni) begin
       w_state_q <= W_IDLE;
       w_req_q   <= '0    ;

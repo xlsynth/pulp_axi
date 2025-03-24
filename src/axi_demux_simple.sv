@@ -195,7 +195,7 @@ module axi_demux_simple #(
 
     // lock the valid signal, as the selection gets pushed into the W FIFO on first assertion,
     // prevent further pushing
-    `FFLARN(lock_aw_valid_q, lock_aw_valid_d, load_aw_lock, '0, clk_i, rst_ni)
+    `FFLSRN(lock_aw_valid_q, lock_aw_valid_d, load_aw_lock, '0, clk_i, rst_ni)
 
     if (UniqueIds) begin : gen_unique_ids_aw
       // If the `UniqueIds` parameter is set, each write transaction has an ID that is unique among
@@ -248,7 +248,7 @@ module axi_demux_simple #(
       .overflow_o ( /*not used*/          )
     );
 
-    `FFLARN(w_select_q, slv_aw_select_i, w_cnt_up, select_t'(0), clk_i, rst_ni)
+    `FFLSRN(w_select_q, slv_aw_select_i, w_cnt_up, select_t'(0), clk_i, rst_ni)
     assign w_select       = (|w_open) ? w_select_q : slv_aw_select_i;
     assign w_select_valid = w_cnt_up | (|w_open);
 
@@ -340,7 +340,7 @@ module axi_demux_simple #(
     end
 
     // this ff is needed so that ar does not get de-asserted if an atop gets injected
-    `FFLARN(lock_ar_valid_q, lock_ar_valid_d, load_ar_lock, '0, clk_i, rst_ni)
+    `FFLSRN(lock_ar_valid_q, lock_ar_valid_d, load_ar_lock, '0, clk_i, rst_ni)
 
     if (UniqueIds) begin : gen_unique_ids_ar
       // If the `UniqueIds` parameter is set, each read transaction has an ID that is unique among
@@ -615,7 +615,7 @@ module axi_demux_id_counters #(
     assign cnt_full[i] = overflow | (&in_flight);
 
     // holds the selection signal for this id
-    `FFLARN(mst_select_q[i], push_mst_select_i, push_en[i], '0, clk_i, rst_ni)
+    `FFLSRN(mst_select_q[i], push_mst_select_i, push_en[i], '0, clk_i, rst_ni)
 
 // pragma translate_off
 `ifndef VERILATOR

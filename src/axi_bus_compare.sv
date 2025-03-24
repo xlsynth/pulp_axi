@@ -301,7 +301,7 @@ module axi_bus_compare #(
                 .valid_o   (),
                 .ready_i   ( fifo_cmp_valid_r_a[id] & fifo_cmp_valid_r_b[id] & fifo_cmp_data_r_a[id].last )
             );
-            always_ff @(posedge clk_i or negedge rst_ni) begin : proc_r_increment
+            always_ff @(posedge clk_i) begin : proc_r_increment
                 if(!rst_ni) begin
                     r_increment[id] <= '0;
                 end else begin
@@ -361,7 +361,7 @@ module axi_bus_compare #(
             .valid_o   (),
             .ready_i   ( fifo_cmp_valid_w_a & fifo_cmp_valid_w_b & fifo_cmp_data_w_a.last )
         );
-        always_ff @(posedge clk_i or negedge rst_ni) begin : proc_w_increment
+        always_ff @(posedge clk_i) begin : proc_w_increment
             if(!rst_ni) begin
                 w_increment <= '0;
             end else begin

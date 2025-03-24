@@ -265,7 +265,7 @@ module axi_lite_demux #(
 
     // lock the valid signal, as the selection gets pushed into the W FIFO on first assertion,
     // prevent further pushing
-    `FFLARN(lock_aw_valid_q, lock_aw_valid_d, load_aw_lock, '0, clk_i, rst_ni)
+    `FFLSRN(lock_aw_valid_q, lock_aw_valid_d, load_aw_lock, '0, clk_i, rst_ni)
 
     fifo_v3 #(
       .FALL_THROUGH( FallThrough ),

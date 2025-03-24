@@ -186,7 +186,7 @@ module axi_serializer #(
   // Assign as this condition is needed in FSM
   assign wr_fifo_pop = slv_resp_o.b_valid & slv_req_i.b_ready;
 
-  `FFARN(state_q, state_d, AtopIdle, clk_i, rst_ni)
+  `FFSRN(state_q, state_d, AtopIdle, clk_i, rst_ni)
 
 // pragma translate_off
 `ifndef VERILATOR

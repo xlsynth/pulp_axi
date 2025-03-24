@@ -579,14 +579,14 @@ module axi_to_detailed_mem #(
   };
 
   // Registers
-  `FFARN(meta_sel_q, meta_sel_d, 1'b0, clk_i, rst_ni)
-  `FFARN(sel_lock_q, sel_lock_d, 1'b0, clk_i, rst_ni)
-  `FFARN(rd_meta_q, rd_meta_d, meta_t'{default: '0}, clk_i, rst_ni)
-  `FFARN(wr_meta_q, wr_meta_d, meta_t'{default: '0}, clk_i, rst_ni)
-  `FFARN(r_cnt_q, r_cnt_d, '0, clk_i, rst_ni)
-  `FFARN(w_cnt_q, w_cnt_d, '0, clk_i, rst_ni)
-  `FFARN(collect_b_err_q, collect_b_err_d, '0, clk_i, rst_ni)
-  `FFARN(collect_b_exokay_q, collect_b_exokay_d, 1'b1, clk_i, rst_ni)
+  `FFSRN(meta_sel_q, meta_sel_d, 1'b0, clk_i, rst_ni)
+  `FFSRN(sel_lock_q, sel_lock_d, 1'b0, clk_i, rst_ni)
+  `FFSRN(rd_meta_q, rd_meta_d, meta_t'{default: '0}, clk_i, rst_ni)
+  `FFSRN(wr_meta_q, wr_meta_d, meta_t'{default: '0}, clk_i, rst_ni)
+  `FFSRN(r_cnt_q, r_cnt_d, '0, clk_i, rst_ni)
+  `FFSRN(w_cnt_q, w_cnt_d, '0, clk_i, rst_ni)
+  `FFSRN(collect_b_err_q, collect_b_err_d, '0, clk_i, rst_ni)
+  `FFSRN(collect_b_exokay_q, collect_b_exokay_d, 1'b1, clk_i, rst_ni)
 
   // Assertions
   // pragma translate_off

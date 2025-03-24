@@ -329,7 +329,7 @@ module axi_atop_filter #(
     end
   end
 
-  always_ff @(posedge clk_i, negedge rst_ni) begin
+  always_ff @(posedge clk_i) begin
     if (!rst_ni) begin
       id_q <= '0;
       r_beats_q <= '0;

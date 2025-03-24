@@ -200,11 +200,11 @@ module axi_isolate_inner #(
   cnt_t pending_ar_d,  pending_ar_q;
   logic update_ar_cnt;
 
-  `FFLARN(pending_aw_q, pending_aw_d, update_aw_cnt, '0, clk_i, rst_ni)
-  `FFLARN(pending_w_q, pending_w_d, update_w_cnt, '0, clk_i, rst_ni)
-  `FFLARN(pending_ar_q, pending_ar_d, update_ar_cnt, '0, clk_i, rst_ni)
-  `FFLARN(state_aw_q, state_aw_d, update_aw_state, Isolate, clk_i, rst_ni)
-  `FFLARN(state_ar_q, state_ar_d, update_ar_state, Isolate, clk_i, rst_ni)
+  `FFLSRN(pending_aw_q, pending_aw_d, update_aw_cnt, '0, clk_i, rst_ni)
+  `FFLSRN(pending_w_q, pending_w_d, update_w_cnt, '0, clk_i, rst_ni)
+  `FFLSRN(pending_ar_q, pending_ar_d, update_ar_cnt, '0, clk_i, rst_ni)
+  `FFLSRN(state_aw_q, state_aw_d, update_aw_state, Isolate, clk_i, rst_ni)
+  `FFLSRN(state_ar_q, state_ar_d, update_ar_state, Isolate, clk_i, rst_ni)
 
   // Update counters.
   always_comb begin

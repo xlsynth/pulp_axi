@@ -356,7 +356,7 @@ module axi_lite_to_apb #(
     endcase
   end
 
-  `FFLARN(apb_state_q, apb_state_d, apb_update, Setup, clk_i, rst_ni)
+  `FFLSRN(apb_state_q, apb_state_d, apb_update, Setup, clk_i, rst_ni)
 
   // parameter check
   // pragma translate_off

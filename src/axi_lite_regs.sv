@@ -313,7 +313,7 @@ module axi_lite_regs #(
 
   // Register array mapping, even read only register can be loaded over `reg_load_i`.
   for (genvar i = 0; i < RegNumBytes; i++) begin : gen_rw_regs
-    `FFLARN(reg_q[i], reg_d[i], reg_update[i], RegRstVal[i], clk_i, rst_ni)
+    `FFLSRN(reg_q[i], reg_d[i], reg_update[i], RegRstVal[i], clk_i, rst_ni)
     assign reg_q_o[i] = reg_q[i];
   end
 

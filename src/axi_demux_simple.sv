@@ -458,6 +458,7 @@ module axi_demux_simple #(
     end
 
 // Validate parameters.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
 `ifndef XSIM
@@ -506,6 +507,7 @@ module axi_demux_simple #(
 `endif
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
   end
 endmodule
 
@@ -617,6 +619,7 @@ module axi_demux_id_counters #(
     // holds the selection signal for this id
     `FFLSRN(mst_select_q[i], push_mst_select_i, push_en[i], '0, clk_i, rst_ni)
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
 `ifndef XSIM
@@ -628,6 +631,7 @@ module axi_demux_id_counters #(
 `endif
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
   end
 endmodule
 

@@ -99,6 +99,7 @@ module axi_to_axi_lite #(
   );
 
   // Assertions, check params
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -108,6 +109,7 @@ module axi_to_axi_lite #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 // Description: This module does the translation of the full AXI4+ATOP to AXI4-Lite signals.
@@ -226,6 +228,7 @@ module axi_to_axi_lite_id_reflect #(
   };
 
   // Assertions
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   aw_atop: assume property( @(posedge clk_i) disable iff (~rst_ni)
@@ -242,6 +245,7 @@ module axi_to_axi_lite_id_reflect #(
     $fatal(1, "AR request length has to be zero. Value observed: %0b", slv_req_i.ar.len);
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 // interface wrapper

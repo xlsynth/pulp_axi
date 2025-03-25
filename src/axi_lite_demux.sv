@@ -440,6 +440,7 @@ module axi_lite_demux #(
     end
     assign r_fifo_pop      = slv_r_valid & slv_r_ready;
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
     // pragma translate_off
     `ifndef VERILATOR
     default disable iff (!rst_ni);
@@ -465,8 +466,10 @@ module axi_lite_demux #(
       $fatal(1, "slv_aw_chan_select unstable with valid set.");
     `endif
     // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
     initial begin: p_assertions
@@ -475,6 +478,7 @@ module axi_lite_demux #(
     end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/assign.svh"
@@ -556,6 +560,7 @@ module axi_lite_demux_intf #(
     .mst_resps_i     ( mst_resps       )
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
     initial begin: p_assertions
@@ -564,4 +569,5 @@ module axi_lite_demux_intf #(
     end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

@@ -361,6 +361,7 @@ module axi_atop_filter #(
   );
   assign r_resp_cmd_push.len = slv_req_i.aw.len;
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -370,6 +371,7 @@ module axi_atop_filter #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/assign.svh"
@@ -436,6 +438,7 @@ module axi_atop_filter_intf #(
     .mst_req_o  ( mst_req  ),
     .mst_resp_i ( mst_resp )
   );
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -445,4 +448,5 @@ module axi_atop_filter_intf #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

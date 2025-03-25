@@ -287,6 +287,7 @@ module axi_to_mem_banked #(
     assign mem_atop_o[i]  = mem_payload[i].atop;
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -304,6 +305,7 @@ module axi_to_mem_banked #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/typedef.svh"
@@ -421,6 +423,7 @@ module axi_to_mem_banked_intf #(
     .mem_rdata_i
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -431,5 +434,6 @@ module axi_to_mem_banked_intf #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 

@@ -112,6 +112,7 @@ module axi_lite_xbar #(
         mst_port_idx_t'(Cfg.NoMstPorts) : mst_port_idx_t'(dec_ar);
 
     // make sure that the default slave does not get changed, if there is an unserved Ax
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
     // pragma translate_off
     `ifndef VERILATOR
     default disable iff (~rst_ni);
@@ -137,6 +138,7 @@ module axi_lite_xbar #(
                                    when there is an unserved Ar beat. Slave Port: %0d", i));
     `endif
     // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
     axi_lite_demux #(
       .aw_chan_t      ( aw_chan_t          ),  // AW Channel Type
       .w_chan_t       (  w_chan_t          ),  //  W Channel Type

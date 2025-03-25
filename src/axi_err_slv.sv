@@ -242,6 +242,7 @@ module axi_err_slv #(
     .overflow_o(                 )
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   `ifndef XSIM
@@ -257,5 +258,6 @@ module axi_err_slv #(
   `endif
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
 endmodule

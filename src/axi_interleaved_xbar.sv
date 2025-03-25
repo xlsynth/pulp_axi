@@ -161,6 +161,7 @@ import cf_math_pkg::idx_width;
     end
 
     // make sure that the default slave does not get changed, if there is an unserved Ax
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
     // pragma translate_off
     `ifndef VERILATOR
     `ifndef XSIM
@@ -188,6 +189,7 @@ import cf_math_pkg::idx_width;
     `endif
     `endif
     // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
     axi_demux #(
       .AxiIdWidth     ( Cfg.AxiIdWidthSlvPorts ),  // ID Width
       .AtopSupport    ( ATOPs                  ),
@@ -300,6 +302,7 @@ import cf_math_pkg::idx_width;
     );
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   `ifndef XSIM
@@ -312,6 +315,7 @@ import cf_math_pkg::idx_width;
   `endif
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule : axi_interleaved_xbar
 
 `include "axi/assign.svh"

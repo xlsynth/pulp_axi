@@ -185,6 +185,7 @@ module axi_delayer_intf #(
     .mst_resp_i ( mst_resp )
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -195,4 +196,5 @@ module axi_delayer_intf #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

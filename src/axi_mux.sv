@@ -136,6 +136,7 @@ module axi_mux #(
       .data_o  ( slv_resps_o[0].r       )
     );
 // Validate parameters.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
     `ASSERT_INIT(CorrectIdWidthSlvAw, $bits(slv_reqs_i[0].aw.id) == SlvAxiIDWidth)
     `ASSERT_INIT(CorrectIdWidthSlvB, $bits(slv_resps_o[0].b.id) == SlvAxiIDWidth)
@@ -146,6 +147,7 @@ module axi_mux #(
     `ASSERT_INIT(CorrectIdWidthMstAr, $bits(mst_req_o.ar.id) == SlvAxiIDWidth)
     `ASSERT_INIT(CorrectIdWidthMstR, $bits(mst_resp_i.r.id) == SlvAxiIDWidth)
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
   // other non degenerate cases
   end else begin : gen_mux
@@ -463,6 +465,7 @@ module axi_mux #(
     );
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin
@@ -492,6 +495,7 @@ module axi_mux #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 // interface wrap

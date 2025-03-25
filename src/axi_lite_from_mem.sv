@@ -210,6 +210,7 @@ module axi_lite_from_mem #(
   assign mem_rsp_valid_o = (axi_rsp_i.b_valid && axi_req_o.b_ready) ||
                            (axi_rsp_i.r_valid && axi_req_o.r_ready);
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef SYNTHESIS
   `ifndef VERILATOR
@@ -244,4 +245,5 @@ module axi_lite_from_mem #(
   `endif
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

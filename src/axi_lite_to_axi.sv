@@ -85,6 +85,7 @@ module axi_lite_to_axi #(
     default: '0
   };
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -92,6 +93,7 @@ module axi_lite_to_axi #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 module axi_lite_to_axi_intf #(
@@ -104,6 +106,7 @@ module axi_lite_to_axi_intf #(
 );
   localparam int unsigned AxiSize = axi_pkg::size_t'($unsigned($clog2(AXI_DATA_WIDTH/8)));
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
   initial begin
     assert(in.AXI_ADDR_WIDTH == out.AXI_ADDR_WIDTH);
@@ -111,6 +114,7 @@ module axi_lite_to_axi_intf #(
     assert(AXI_DATA_WIDTH    == out.AXI_DATA_WIDTH);
   end
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
   assign out.aw_id     = '0;
   assign out.aw_addr   = in.aw_addr;

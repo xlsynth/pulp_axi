@@ -187,6 +187,7 @@ module axi_lite_mailbox #(
     end
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin : proc_check_params
@@ -196,6 +197,7 @@ module axi_lite_mailbox #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/typedef.svh"
@@ -541,6 +543,7 @@ module axi_lite_mailbox_slave #(
     .ready_i ( slv_req_i.r_ready  ),
     .data_o  ( slv_resp_o.r       )
   );
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin : proc_check_params
@@ -551,6 +554,7 @@ module axi_lite_mailbox_slave #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/assign.svh"
@@ -608,6 +612,7 @@ module axi_lite_mailbox_intf #(
     .base_addr_i // base address for each port
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -622,4 +627,5 @@ module axi_lite_mailbox_intf #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

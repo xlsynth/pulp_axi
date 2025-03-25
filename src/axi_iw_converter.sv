@@ -219,6 +219,7 @@ module axi_iw_converter #(
     assign slv_resp_o = mst_resp_i;
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin : p_assert
@@ -252,6 +253,7 @@ module axi_iw_converter #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 
@@ -333,6 +335,7 @@ module axi_iw_converter_intf #(
     .mst_req_o  ( mst_req  ),
     .mst_resp_i ( mst_resp )
   );
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
     initial begin
@@ -347,4 +350,5 @@ module axi_iw_converter_intf #(
     end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

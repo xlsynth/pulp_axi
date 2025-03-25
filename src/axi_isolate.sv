@@ -387,6 +387,7 @@ module axi_isolate_inner #(
   // the isolated output signal
   assign isolated_o = (state_aw_q == Isolate && state_ar_q == Isolate);
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin
@@ -407,6 +408,7 @@ module axi_isolate_inner #(
       $fatal(1, "pending_ar_q underflowed");
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/assign.svh"
@@ -476,6 +478,7 @@ module axi_isolate_intf #(
     .isolated_o
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -486,5 +489,6 @@ module axi_isolate_intf #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 

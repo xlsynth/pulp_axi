@@ -455,6 +455,7 @@ module axi_lite_dw_converter #(
   end
 
   // Assertions, check params
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -482,6 +483,7 @@ module axi_lite_dw_converter #(
       $fatal(1, "R must remain stable until handshake happened.");
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 /// Interface wrapper for `axi_lite_dw_converter`.

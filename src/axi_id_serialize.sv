@@ -337,6 +337,7 @@ module axi_id_serialize #(
     );
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin : p_assert
@@ -361,6 +362,7 @@ module axi_id_serialize #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 
@@ -437,6 +439,7 @@ module axi_id_serialize_intf #(
     .mst_resp_i ( mst_resp )
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin
@@ -451,4 +454,5 @@ module axi_id_serialize_intf #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

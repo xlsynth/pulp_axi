@@ -151,6 +151,7 @@ import cf_math_pkg::idx_width;
         mst_port_idx_t'(Cfg.NoMstPorts) : mst_port_idx_t'(dec_ar);
 
     // make sure that the default slave does not get changed, if there is an unserved Ax
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
     // pragma translate_off
     `ifndef VERILATOR
     `ifndef XSIM
@@ -178,6 +179,7 @@ import cf_math_pkg::idx_width;
     `endif
     `endif
     // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
     axi_demux #(
       .AxiIdWidth     ( Cfg.AxiIdWidthSlvPorts ),  // ID Width
       .AtopSupport    ( ATOPs                  ),
@@ -270,6 +272,7 @@ import cf_math_pkg::idx_width;
     end
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   `ifndef XSIM
@@ -282,6 +285,7 @@ import cf_math_pkg::idx_width;
   `endif
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `ifndef VCS

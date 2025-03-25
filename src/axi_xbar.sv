@@ -163,6 +163,7 @@ import cf_math_pkg::idx_width;
     );
   end
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   `ifndef XSIM
@@ -175,6 +176,7 @@ import cf_math_pkg::idx_width;
   `endif
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/assign.svh"

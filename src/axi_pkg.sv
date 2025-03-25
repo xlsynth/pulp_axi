@@ -134,6 +134,7 @@ package axi_pkg;
   function automatic largest_addr_t wrap_boundary (largest_addr_t addr, size_t size, len_t len);
     largest_addr_t wrap_addr;
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
     // pragma translate_off
     `ifndef VERILATOR
       assume (len == len_t'(4'b1) || len == len_t'(4'b11) || len == len_t'(4'b111) ||
@@ -141,6 +142,7 @@ package axi_pkg;
         $error("AXI BURST_WRAP with not allowed len of: %0h", len);
     `endif
     // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
     // In A3-51 the wrap boundary is defined as:
     // `Wrap_Boundary = (INT(Start_Address / (Number_Bytes × Burst_Length))) ×

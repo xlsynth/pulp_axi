@@ -109,6 +109,7 @@ module axi_id_prepend #(
   assign slv_r_valids_o   = mst_r_valids_i;
   assign mst_r_readies_o  = slv_r_readies_i;
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin : p_assert
@@ -158,4 +159,5 @@ module axi_id_prepend #(
       else $fatal (1, "Something with the R channel ID stripping went wrong.");
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

@@ -176,6 +176,7 @@ module axi_cut_intf #(
   );
 
   // Check the invariants.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -194,6 +195,7 @@ module axi_cut_intf #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 module axi_lite_cut_intf #(
@@ -250,6 +252,7 @@ module axi_lite_cut_intf #(
   );
 
   // Check the invariants.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -262,4 +265,5 @@ module axi_lite_cut_intf #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

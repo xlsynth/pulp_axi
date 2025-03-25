@@ -151,6 +151,7 @@ module axi_modify_address_intf #(
     .mst_ar_addr_i
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin
@@ -161,4 +162,5 @@ module axi_modify_address_intf #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

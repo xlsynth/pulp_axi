@@ -80,6 +80,7 @@ module axi_multicut #(
   end
 
   // Check the invariants
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -87,6 +88,7 @@ module axi_multicut #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/assign.svh"
@@ -148,6 +150,7 @@ module axi_multicut_intf #(
   );
 
   // Check the invariants.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -166,6 +169,7 @@ module axi_multicut_intf #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 module axi_lite_multicut_intf #(
@@ -222,6 +226,7 @@ module axi_lite_multicut_intf #(
   );
 
   // Check the invariants.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin
@@ -234,4 +239,5 @@ module axi_lite_multicut_intf #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

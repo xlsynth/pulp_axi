@@ -359,6 +359,7 @@ module axi_lite_to_apb #(
   `FFLSRN(apb_state_q, apb_state_d, apb_update, Setup, clk_i, rst_ni)
 
   // parameter check
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin : check_params
@@ -375,6 +376,7 @@ module axi_lite_to_apb #(
   end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/typedef.svh"

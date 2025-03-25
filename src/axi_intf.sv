@@ -201,6 +201,7 @@ interface AXI_BUS_DV #(
           r_id, r_data, r_resp, r_last, r_user, r_valid, r_ready
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   // Single-Channel Assertions: Signals including valid must not change between valid and handshake.
@@ -261,6 +262,7 @@ interface AXI_BUS_DV #(
   )) else $error("AR burst crossing 4 KiB page boundary detected, which is illegal!");
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
 endinterface
 

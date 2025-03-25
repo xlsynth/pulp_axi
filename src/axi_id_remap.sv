@@ -350,6 +350,7 @@ module axi_id_remap #(
   `FFSRN(aw_id_q, aw_id_d, '0, clk_i, rst_ni)
   `FFSRN(state_q, state_d, Ready, clk_i, rst_ni)
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   initial begin : p_assert
@@ -399,6 +400,7 @@ module axi_id_remap #(
       |=> mst_req_o.aw_valid && $stable(mst_req_o.aw.id));
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 /// Internal module of [`axi_id_remap`](module.axi_id_remap): Table to remap input to output IDs.
@@ -550,6 +552,7 @@ module axi_id_remap_table #(
   `FFSRN(table_q, table_d, '0, clk_i, rst_ni)
 
   // Assertions
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
     default disable iff (!rst_ni);
@@ -571,6 +574,7 @@ module axi_id_remap_table #(
     end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
 endmodule
 
@@ -644,6 +648,7 @@ module axi_id_remap_intf #(
     .mst_req_o  ( mst_req  ),
     .mst_resp_i ( mst_resp )
   );
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
     initial begin
@@ -658,4 +663,5 @@ module axi_id_remap_intf #(
     end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

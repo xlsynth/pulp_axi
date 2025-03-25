@@ -589,6 +589,7 @@ module axi_to_detailed_mem #(
   `FFSRN(collect_b_exokay_q, collect_b_exokay_d, 1'b1, clk_i, rst_ni)
 
   // Assertions
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
   default disable iff (!rst_ni);
@@ -617,6 +618,7 @@ module axi_to_detailed_mem #(
     else $warning("Unexpected atomic operation on read.");
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 

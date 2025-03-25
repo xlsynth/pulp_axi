@@ -188,6 +188,7 @@ module axi_serializer #(
 
   `FFSRN(state_q, state_d, AtopIdle, clk_i, rst_ni)
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -215,6 +216,7 @@ module axi_serializer #(
     else $error("R beat lost.");
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 `include "axi/typedef.svh"
@@ -278,6 +280,7 @@ module axi_serializer_intf #(
     .mst_resp_i ( mst_resp )
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -292,4 +295,5 @@ module axi_serializer_intf #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

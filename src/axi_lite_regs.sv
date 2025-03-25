@@ -378,6 +378,7 @@ module axi_lite_regs #(
   );
 
   // Validate parameters.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
     initial begin: p_assertions
@@ -403,6 +404,7 @@ module axi_lite_regs #(
     end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule
 
 
@@ -470,6 +472,7 @@ module axi_lite_regs_intf #(
   );
 
   // Validate parameters.
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
   // pragma translate_off
   `ifndef VERILATOR
     initial begin: p_assertions
@@ -480,4 +483,5 @@ module axi_lite_regs_intf #(
     end
   `endif
   // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 endmodule

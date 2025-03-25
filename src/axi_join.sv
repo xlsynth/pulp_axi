@@ -23,6 +23,7 @@ module axi_join_intf (
 
   `AXI_ASSIGN(out, in)
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin
@@ -33,5 +34,6 @@ module axi_join_intf (
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
 endmodule

@@ -354,6 +354,7 @@ module axi_to_mem_interleaved_intf #(
     .mem_rdata_i
   );
 
+`ifdef PULP_AXI_DISABLE_NONSYNTH_CODE/
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
@@ -364,5 +365,6 @@ module axi_to_mem_interleaved_intf #(
   end
 `endif
 // pragma translate_on
+`endif // PULP_AXI_DISABLE_NONSYNTH_CODE/
 
 endmodule // axi_to_mem_interleaved_intf
